@@ -23,11 +23,11 @@ module Calculator
     private
 
     def ensure_valid_principal
-      raise Error::InvalidPrincipal if @principal.to_f < MINIMUM_PRINCIPAL_AMOUNT
+      raise Error::InvalidPrincipal if @principal < MINIMUM_PRINCIPAL_AMOUNT
     end
 
     def ensure_valid_term
-      raise Error::InvalidTerm if @term.to_f < MINIMUM_TERM_LENGTH
+      raise Error::InvalidTerm if @term < MINIMUM_TERM_LENGTH
     end
 
     def calculate
@@ -35,11 +35,11 @@ module Calculator
     end
 
     def daily_interest_rate
-      (@rate.to_f / 100.0) / 365.0
+      (@rate / 100.0) / 365.0
     end
 
     def term_in_days
-      (@term.to_f * (365.0 / 12.0))
+      (@term * (365.0 / 12.0))
     end
   end
 end
