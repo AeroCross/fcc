@@ -47,24 +47,24 @@ module Calculator
       end
 
       context "when the term length is the same as the minimum" do
-        let(:principal) { 1000 }
+        let(:principal) { 1_000 }
         let(:rate) { 1.10 }
         let(:term) { 12 }
 
         it "returns the correct final balance" do
-          expect(result).to eq(1011)
+          expect(result).to eq(1_011)
         end
       end
     end
 
     describe "principal deposit scenarios" do
       context "when the principal is the same as the minimum" do
-        let(:principal) { 1000 }
+        let(:principal) { 1_000 }
         let(:rate) { 1.10 }
         let(:term) { 12 }
 
         it "returns the correct final balance" do
-          expect(result).to eq(1011)
+          expect(result).to eq(1_011)
         end
       end
     end
