@@ -47,12 +47,12 @@ module Calculator
       end
 
       context "when the term length is the same as the minimum" do
-        let(:principal) { 1_000 }
+        let(:principal) { 10_000 }
         let(:rate) { 1.10 }
         let(:term) { 3 }
 
         it "returns the correct final balance" do
-          expect(result).to eq(1_003)
+          expect(result).to eq(1_028)
         end
       end
     end
