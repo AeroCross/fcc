@@ -22,24 +22,26 @@ module Calculator
 
     private
 
+    attr_reader :principal, :rate, :term
+
     def ensure_valid_principal
-      raise Error::InvalidPrincipal if @principal < MINIMUM_PRINCIPAL_AMOUNT
+      raise Error::InvalidPrincipal if principal < MINIMUM_PRINCIPAL_AMOUNT
     end
 
     def ensure_valid_term
-      raise Error::InvalidTerm if @term < MINIMUM_TERM_LENGTH
+      raise Error::InvalidTerm if term < MINIMUM_TERM_LENGTH
     end
 
     def calculate
-      (@principal + (@principal * daily_interest_rate * term_in_days)).round
+      (principal + (principal * daily_interest_rate * term_in_days)).round
     end
 
     def daily_interest_rate
-      (@rate / 100.0) / 365.0
+      (rate / 100.0) / 365.0
     end
 
     def term_in_days
-      (@term * (365.0 / 12.0))
+      (term * (365.0 / 12.0))
     end
   end
 end

@@ -22,24 +22,26 @@ module Calculator
 
     private
 
+    attr_reader :principal, :rate, :term
+
     def ensure_valid_principal
-      raise Error::InvalidPrincipal if @principal < MINIMUM_PRINCIPAL_AMOUNT
+      raise Error::InvalidPrincipal if principal < MINIMUM_PRINCIPAL_AMOUNT
     end
 
     def ensure_valid_term
-      raise Error::InvalidTerm if @term < MINIMUM_TERM_LENGTH
+      raise Error::InvalidTerm if term < MINIMUM_TERM_LENGTH
     end
 
     def calculate
-      (@principal * (1 + quarterly_interest_rate)**quarters_in_term).round
+      (principal * (1 + quarterly_interest_rate)**quarters_in_term).round
     end
 
     def quarterly_interest_rate
-      (@rate / 100.0) / 4.0
+      (rate / 100.0) / 4.0
     end
 
     def quarters_in_term
-      (@term / 12.0) * 4.0
+      (term / 12.0) * 4.0
     end
   end
 end
