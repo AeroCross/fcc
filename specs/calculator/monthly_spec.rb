@@ -49,7 +49,7 @@ module Calculator
       context "when the term length is the same as the minimum" do
         let(:principal) { 10_000 }
         let(:rate) { 1.10 }
-        let(:term) { 3 }
+        let(:term) { Monthly::MINIMUM_TERM_LENGTH }
 
         it "returns the correct final balance" do
           expect(result).to eq(10_028)
@@ -59,9 +59,9 @@ module Calculator
 
     describe "principal deposit scenarios" do
       context "when the principal is the same as the minimum" do
-        let(:principal) { 1_000 }
+        let(:principal) { Monthly::MINIMUM_PRINCIPAL_AMOUNT }
         let(:rate) { 1.10 }
-        let(:term) { 36 }
+        let(:term) { 36 } # 3 years
 
         it "returns the correct final balance" do
           expect(result).to eq(1_034)
@@ -73,7 +73,7 @@ module Calculator
       context "when the interest rate is different from the reference" do
         let(:principal) { 10_000 }
         let(:rate) { 4.12 }
-        let(:term) { 36 }
+        let(:term) { 36 } # 3 years
 
         it "returns the correct final balance" do
           expect(result).to eq(11_313)
@@ -83,7 +83,7 @@ module Calculator
       context "when the interest rate is an integer" do
         let(:principal) { 10_000 }
         let(:rate) { 3 }
-        let(:term) { 36 }
+        let(:term) { 36 } # 3 years
 
         it "returns the correct final balance" do
           expect(result).to eq(10_941)
@@ -93,9 +93,9 @@ module Calculator
 
     describe "invalid scenarios" do
       context "when the principal is lower than the minimum" do
-        let(:principal) { 900 }
+        let(:principal) { Monthly::MINIMUM_PRINCIPAL_AMOUNT - 100.0 }
         let(:rate) { 1.10 }
-        let(:term) { 12 }
+        let(:term) { 12 } # 1 year
 
         it "raises an error" do
           expect { result }.to raise_error(Error::InvalidPrincipal)
@@ -105,7 +105,7 @@ module Calculator
       context "when the term length is lower than the minimum" do
         let(:principal) { 12_000 }
         let(:rate) { 2.30 }
-        let(:term) { 2 }
+        let(:term) { Monthly::MINIMUM_TERM_LENGTH - 1 }
 
         it "raises an error" do
           expect { result }.to raise_error(Error::InvalidTerm)
