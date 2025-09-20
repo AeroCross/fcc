@@ -9,9 +9,9 @@ module Calculator
     # @param rate [Float] Interest rate per annum
     # @param term [Integer] How long the investment term is, in months
     def initialize(principal:, rate:, term:)
-      @principal = principal
-      @rate = rate
-      @term = term
+      @principal = principal.to_f
+      @rate = rate.to_f
+      @term = term.to_f
     end
 
     def call
