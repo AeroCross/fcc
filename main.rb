@@ -5,9 +5,9 @@ require "optparse"
 
 options = {}
 parser = OptionParser.new
-parser.on("-a INT", "--amount", "Amount to deposit (e.g 15600)")
-parser.on("-t INT", "--term", "How long the term deposit is in months (e.g 36)")
-parser.on("-r FLOAT", "--rate", "Interest rate per annum (e.g 1.2)")
+parser.on("-a INT", "--amount", OptionParser::DecimalNumeric, "Amount to deposit (e.g 15600)")
+parser.on("-t INT", "--term", OptionParser::DecimalNumeric, "How long the term deposit is in months (e.g 36)")
+parser.on("-r FLOAT", "--rate", OptionParser::DecimalNumeric, "Interest rate per annum (e.g 1.2)")
 parser.on("-c STR", "--cadence", %w[annually quarterly monthly maturity], "How often is interest paid")
 parser.parse!(into: options)
 
