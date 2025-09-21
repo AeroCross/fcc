@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "error"
+
 module Calculator
   class Base
     MINIMUM_PRINCIPAL_AMOUNT = 1000 # dollars
