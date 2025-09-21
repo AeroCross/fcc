@@ -27,11 +27,11 @@ module Calculator
     attr_reader :principal, :rate, :term
 
     def ensure_valid_principal
-      raise Error::InvalidPrincipal if principal < self.class::MINIMUM_PRINCIPAL_AMOUNT
+      raise Error::InvalidPrincipal, "Invalid principal. Minimum principal: #{self.class::MINIMUM_PRINCIPAL_AMOUNT}" if principal < self.class::MINIMUM_PRINCIPAL_AMOUNT
     end
 
     def ensure_valid_term
-      raise Error::InvalidTerm if term < self.class::MINIMUM_TERM_LENGTH
+      raise Error::InvalidTerm, "Invalid term. Minimum term: #{self.class::MINIMUM_TERM_LENGTH}" if term < self.class::MINIMUM_TERM_LENGTH
     end
 
     def calculate
