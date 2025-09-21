@@ -69,11 +69,11 @@ copied across specs. This should help ensure that even if the reference values a
 #### Separation of Concerns and Code Quality
 
 `main.rb` is very crude. It's meant to be the most barebones, straightforward way of providing a CLI that outputs what
-the acceptance criteria of this exercise is, without wasting almost an time. However, the program has been designed
+the acceptance criteria of this exercise is, without wasting almost any time. However, the program has been designed
 that the underlying calculator and output code can be plugged into anything.
 
-You can consider `main.rb` and `money_formatter.rb` utilitarian and practical, and the `Calculator` namespace what
-I'd be using for providing a UI, or creating a gem.
+You can consider `main.rb` and `money_formatter.rb` utilitarian and practical, and the `Calculator` namespace production
+quality: what I'd be using for providing a UI, or creating a gem.
 
 #### Gem (library) usage
 
